@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}index
+{% endblock title %}
+{%block body %}
+{% load staticfiles %}
+<div class="row mt-4">
+   <div class="col">
+<h2>Add Items</h2>
+<form class="form-inline mt-4" action="add_todo" method="POST" name="content">
+
+<input type="text" name="content" placeholder="type here..." class="form-control mb-2 mr-sm-2">
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+
+<div class="row mt-4">
+ <div class="col">
+   <ul class="list-group">
+  {% for items in todo_items %}
+
+  <li class="list-group-item">{{ items.text}}
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+   <form  action="delete_todo/{{ items.id}}" method="POST" >
+    <button type="submit" class="btn  btn-sm btn-danger">Delete</button>
+   </form>
+  </div>
+  
+  </li>
+ {% endfor %}
+</ul>
+
+ <div>
+</div>
+
+{% endblock body%}
